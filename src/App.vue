@@ -1,29 +1,27 @@
 <template>
     <div id="app">
-        <el-button type="primary" @click="add()">加1</el-button>
-        <el-collapse>
-            <el-collapse-item v-for="item in list" :key="item.id">
-                <el-tabs>
-                    <el-tab-pane label="A">A</el-tab-pane>
-                    <el-tab-pane label="B">B</el-tab-pane>
-                </el-tabs>
-            </el-collapse-item>
-        </el-collapse>
+        <button @click="test">点击</button>
+        <el-dialog title="xxxx" :visible.sync="show">
+            <el-table></el-table>
+            <footer slot="footer">
+                <el-button>a</el-button>
+            </footer>
+            <el-pagination></el-pagination>
+        </el-dialog>
     </div>
 </template>
 
 <script>
-import { nanoid } from "nanoid"
 export default {
     name: "App",
     data() {
         return {
-            list: []
-        }
+            show:false
+        };
     },
     methods: {
-        add() {
-            this.list.push({ id: nanoid() })
+        test(){
+            this.show = !this.show
         }
     }
 }
@@ -39,16 +37,10 @@ export default {
     margin-top: 60px;
 }
 
-.tree-controller {
-    margin-bottom: 50px;
-}
-
-.tabs {
-    transform: translateX(50%);
-}
-
-.wrraper {
-    display: flex;
-    justify-content: space-between;
+.divder {
+    height: 1px;
+    background-color: #58585840;
+    width: 120%;
+    margin-left: -10px;
 }
 </style>
